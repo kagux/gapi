@@ -18,6 +18,8 @@
 namespace GoogleAPI;
 
 use GoogleAPI\Cache\apiCache;
+use GoogleAPI\IO\apiIO;
+use GoogleAPI\Auth\apiAuth;
 
 // Check for the required json and curl extensions, the Google API PHP Client won't function without them.
 if (! function_exists('curl_init')) {
@@ -77,11 +79,10 @@ class apiClient {
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
 
-  public function __construct(apiCache $cache, $config = array()) {
-    $apiConfig = array_merge($this->defaultConfig(), $config);
-    self::$cache = new $apiConfig['cacheClass']();
-    self::$auth = new $apiConfig['authClass']();
-    self::$io = new $apiConfig['ioClass']();
+  public function __construct(apiAuth $auth, apiIO $apiIO, apiCache $cache) {
+    self::$cache = $cache;
+    self::$auth = $auth;
+    self::$io = $apiIO;
   }
 
   public function discover($service, $version = 'v1') {
