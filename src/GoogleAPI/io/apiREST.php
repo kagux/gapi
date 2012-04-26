@@ -17,7 +17,10 @@
 
 namespace GoogleAPI\IO;
 use GoogleAPI\Service\apiServiceRequest;
+use GoogleAPI\apiServiceException;
 use GoogleAPI\apiClient;
+use GoogleAPI\apiException;
+use GoogleAPI\External\URITemplateParser;
 //require_once "external/URITemplateParser.php";
 //require_once "service/apiUtils.php";
 
@@ -135,7 +138,7 @@ class apiREST {
     }
 
     if (count($uriTemplateVars)) {
-      $uriTemplateParser = new URI_Template_Parser($requestUrl);
+      $uriTemplateParser = new URITemplateParser($requestUrl);
       $requestUrl = $uriTemplateParser->expand($uriTemplateVars);
     }
     //FIXME work around for the the uri template lib which url encodes

@@ -442,14 +442,14 @@ class GaData extends apiModel {
   public $totalsForAllResults;
   public $nextLink;
   public $id;
-  protected $__queryType = 'GaDataQuery';
+  protected $__queryType = '\GoogleAPI\Contrib\GaDataQuery';
   protected $__queryDataType = '';
   public $query;
   public $previousLink;
-  protected $__profileInfoType = 'GaDataProfileInfo';
+  protected $__profileInfoType = '\GoogleAPI\Contrib\GaDataProfileInfo';
   protected $__profileInfoDataType = '';
   public $profileInfo;
-  protected $__columnHeadersType = 'GaDataColumnHeaders';
+  protected $__columnHeadersType = '\GoogleAPI\Contrib\GaDataColumnHeaders';
   protected $__columnHeadersDataType = 'array';
   public $columnHeaders;
   public $selfLink;
@@ -681,27 +681,27 @@ class GaDataQuery extends apiModel {
 
 class Goal extends apiModel {
   public $kind;
-  protected $__visitTimeOnSiteDetailsType = 'GoalVisitTimeOnSiteDetails';
+  protected $__visitTimeOnSiteDetailsType = '\GoogleAPI\Contrib\GoalVisitTimeOnSiteDetails';
   protected $__visitTimeOnSiteDetailsDataType = '';
   public $visitTimeOnSiteDetails;
   public $name;
   public $created;
-  protected $__urlDestinationDetailsType = 'GoalUrlDestinationDetails';
+  protected $__urlDestinationDetailsType = '\GoogleAPI\Contrib\GoalUrlDestinationDetails';
   protected $__urlDestinationDetailsDataType = '';
   public $urlDestinationDetails;
   public $updated;
   public $value;
-  protected $__visitNumPagesDetailsType = 'GoalVisitNumPagesDetails';
+  protected $__visitNumPagesDetailsType = '\GoogleAPI\Contrib\GoalVisitNumPagesDetails';
   protected $__visitNumPagesDetailsDataType = '';
   public $visitNumPagesDetails;
   public $internalWebPropertyId;
-  protected $__eventDetailsType = 'GoalEventDetails';
+  protected $__eventDetailsType = '\GoogleAPI\Contrib\GoalEventDetails';
   protected $__eventDetailsDataType = '';
   public $eventDetails;
   public $webPropertyId;
   public $active;
   public $profileId;
-  protected $__parentLinkType = 'GoalParentLink';
+  protected $__parentLinkType = '\GoogleAPI\Contrib\GoalParentLink';
   protected $__parentLinkDataType = '';
   public $parentLink;
   public $type;
@@ -819,7 +819,7 @@ class Goal extends apiModel {
 }
 
 class GoalEventDetails extends apiModel {
-  protected $__eventConditionsType = 'GoalEventDetailsEventConditions';
+  protected $__eventConditionsType = '\GoogleAPI\Contrib\GoalEventDetailsEventConditions';
   protected $__eventConditionsDataType = 'array';
   public $eventConditions;
   public $useEventValue;
@@ -897,7 +897,7 @@ class GoalUrlDestinationDetails extends apiModel {
   public $url;
   public $caseSensitive;
   public $matchType;
-  protected $__stepsType = 'GoalUrlDestinationDetailsSteps';
+  protected $__stepsType = '\GoogleAPI\Contrib\GoalUrlDestinationDetailsSteps';
   protected $__stepsDataType = 'array';
   public $steps;
   public $firstStepRequired;
@@ -1065,12 +1065,12 @@ class Profile extends apiModel {
   public $siteSearchQueryParameters;
   public $currency;
   public $internalWebPropertyId;
-  protected $__childLinkType = 'ProfileChildLink';
+  protected $__childLinkType = '\GoogleAPI\Contrib\ProfileChildLink';
   protected $__childLinkDataType = '';
   public $childLink;
   public $timezone;
   public $siteSearchCategoryParameters;
-  protected $__parentLinkType = 'ProfileParentLink';
+  protected $__parentLinkType = '\GoogleAPI\Contrib\ProfileParentLink';
   protected $__parentLinkDataType = '';
   public $parentLink;
   public $id;
@@ -1217,7 +1217,7 @@ class ProfileParentLink extends apiModel {
 class Profiles extends apiModel {
   public $username;
   public $kind;
-  protected $__itemsType = 'Profile';
+  protected $__itemsType = '\GoogleAPI\Contrib\Profile';
   protected $__itemsDataType = 'array';
   public $items;
   public $itemsPerPage;
@@ -1400,7 +1400,7 @@ class Segments extends apiModel {
 class Webproperties extends apiModel {
   public $username;
   public $kind;
-  protected $__itemsType = 'Webproperty';
+  protected $__itemsType = '\GoogleAPI\Contrib\Webproperty';
   protected $__itemsDataType = 'array';
   public $items;
   public $itemsPerPage;
@@ -1466,10 +1466,10 @@ class Webproperty extends apiModel {
   public $updated;
   public $websiteUrl;
   public $internalWebPropertyId;
-  protected $__childLinkType = 'WebpropertyChildLink';
+  protected $__childLinkType = '\GoogleAPI\Contrib\WebpropertyChildLink';
   protected $__childLinkDataType = '';
   public $childLink;
-  protected $__parentLinkType = 'WebpropertyParentLink';
+  protected $__parentLinkType = '\GoogleAPI\Contrib\WebpropertyParentLink';
   protected $__parentLinkDataType = '';
   public $parentLink;
   public $id;
