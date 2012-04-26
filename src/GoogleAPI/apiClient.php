@@ -41,10 +41,11 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
 /**
  * The Google API Client
  * http://code.google.com/p/google-api-php-client/
- *
  * @author Chris Chabot <chabotc@google.com>
  * @author Chirag Shah <chirags@google.com>
+ *
  */
+
 class apiClient {
   // the version of the discovery mechanism this class is meant to work with
   const discoveryVersion = 'v0.3';
@@ -79,6 +80,11 @@ class apiClient {
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
 
+   /**
+    * @param Auth\apiAuth $auth
+    * @param IO\apiIO $apiIO
+    * @param Cache\apiCache $cache
+    */
   public function __construct(apiAuth $auth, apiIO $apiIO, apiCache $cache) {
     self::$cache = $cache;
     self::$auth = $auth;

@@ -16,6 +16,11 @@
  */
 namespace GoogleAPI\Contrib;
 
+use GoogleAPI\Service\apiServiceResource;
+use GoogleAPI\Service\apiService;
+use GoogleAPI\Service\apiModel;
+use GoogleAPI\apiClient;
+
 //require_once 'service/apiModel.php';
 //require_once 'service/apiService.php';
 //require_once 'service/apiServiceRequest.php';

@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+namespace GoogleAPI\Service;
 /**
  * This class defines attributes, valid values, and usage which is generated from
  * a given json schema. http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5

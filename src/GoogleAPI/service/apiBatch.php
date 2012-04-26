@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Service;
 /**
  * Wrapper for the (experimental!) JSON-RPC protocol, for production use regular REST calls instead
  *

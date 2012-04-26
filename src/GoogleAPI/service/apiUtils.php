@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+namespace GoogleAPI\Service;
 /**
  * Collection of static utility methods used for convenience across
  * the client library.
