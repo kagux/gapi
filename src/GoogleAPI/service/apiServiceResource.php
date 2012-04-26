@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 namespace GoogleAPI\Service;
+
+use GoogleAPI\IO\apiREST;
 /**
  * Implements the actual methods/resources of the discovered Google API using magic function
  * calling overloading (__call()), which on call will see if the method name (plus.activities.list)
@@ -189,8 +191,7 @@ class apiServiceResource {
   }
 
   protected function useObjects() {
-    global $apiConfig;
-    return (isset($apiConfig['use_objects']) && $apiConfig['use_objects']);
+      return (\GoogleAPI\apiClient::$config['use_objects']);
   }
 
   protected function stripNull(&$o) {

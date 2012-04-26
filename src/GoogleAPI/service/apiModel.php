@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 namespace GoogleAPI\Service;
+
 /**
  * This class defines attributes, valid values, and usage which is generated from
  * a given json schema. http://tools.ietf.org/html/draft-zyp-json-schema-03#section-5
@@ -95,8 +96,7 @@ class apiModel {
   }
   
   protected function useObjects() {
-    global $apiConfig;
-    return (isset($apiConfig['use_objects']) && $apiConfig['use_objects']);
+    return (\GoogleAPI\apiClient::$config['use_objects']);
   }
 
   /**

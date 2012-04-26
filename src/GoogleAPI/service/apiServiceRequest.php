@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 namespace GoogleAPI\Service;
+use GoogleAPI\apiClient;
 /**
  * Internal representation of a Google API request, used by the apiServiceResource class to
  * construct API function calls and passing them to the IO layer who knows how to execute
@@ -49,8 +50,7 @@ class apiServiceRequest {
     if (substr($restBasePath, 0, 4) == 'http') {
       $this->restBasePath = $restBasePath;
     } else {
-      global $apiConfig;
-      $this->restBasePath = $apiConfig['basePath'] . $restBasePath;
+      $this->restBasePath = apiClient::$config['basePath'] . $restBasePath;
     }
 
     $this->restPath = $restPath;

@@ -25,7 +25,7 @@ use GoogleAPI\apiClient;
  * @author Chirag Shah <chirags@google.com>
  */
 
-require_once 'apiCacheParser.php';
+//require_once 'apiCacheParser.php';
 
 class apiCurlIO implements apiIO {
   const CONNECTION_ESTABLISHED = "HTTP/1.0 200 Connection established\r\n\r\n";

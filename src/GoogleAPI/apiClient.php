@@ -79,7 +79,11 @@ class apiClient {
       'request_token_url' => 'https://www.google.com/accounts/OAuthGetRequestToken',
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
-  private $config = array(
+  static $config = array(
+      // True if objects should be returned by the service classes.
+      // False if associative arrays should be returned (default behavior).
+      'use_objects' => false,
+
       // Don't change these unless you're working against a special development or testing environment.
       'basePath' => 'https://www.googleapis.com',
 
@@ -113,7 +117,7 @@ class apiClient {
       throw new apiException('Cant add services after having authenticated');
     }
     $this->services[$service] = $this->defaultService;
-    $this->services[$service]['discoveryURI'] = $this->config['basePath'] . '/discovery/' . self::discoveryVersion . '/describe/' . urlencode($service) . '/' . urlencode($version);
+    $this->services[$service]['discoveryURI'] = self::$config['basePath'] . '/discovery/' . self::discoveryVersion . '/describe/' . urlencode($service) . '/' . urlencode($version);
   }
 
   /**
@@ -313,8 +317,7 @@ class apiClient {
    * False if associative arrays should be returned (default behavior).
    */
   public function setUseObjects($useObjects) {
-    global $apiConfig;
-    $apiConfig['use_objects'] = $useObjects;
+    self::$config['use_objects'] = $useObjects;
   }
 
   private function discoverService($serviceName, $serviceURI) {

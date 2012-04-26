@@ -128,7 +128,7 @@ use GoogleAPI\apiClient;
       $params = array_merge($params, $optParams);
       $data = $this->__call('list', array($params));
       if ($this->useObjects()) {
-        return new Accounts($data);
+        return new AnalyticsAccounts($data);
       } else {
         return $data;
       }
@@ -300,12 +300,12 @@ class apiAnalyticsService extends apiService {
   }
 }
 
-class Account extends apiModel {
+class AnalyticsAccount extends apiModel {
   public $kind;
   public $name;
   public $created;
   public $updated;
-  protected $__childLinkType = 'AccountChildLink';
+  protected $__childLinkType = '\GoogleAPI\Contrib\AccountChildLink';
   protected $__childLinkDataType = '';
   public $childLink;
   public $id;
@@ -371,10 +371,10 @@ class AccountChildLink extends apiModel {
   }
 }
 
-class Accounts extends apiModel {
+class AnalyticsAccounts extends apiModel {
   public $username;
   public $kind;
-  protected $__itemsType = 'Account';
+  protected $__itemsType = '\GoogleAPI\Contrib\AnalyticsAccount';
   protected $__itemsDataType = 'array';
   public $items;
   public $itemsPerPage;

@@ -16,6 +16,8 @@
  */
 
 namespace GoogleAPI\IO;
+use GoogleAPI\Service\apiServiceRequest;
+use GoogleAPI\apiClient;
 //require_once "external/URITemplateParser.php";
 //require_once "service/apiUtils.php";
 
