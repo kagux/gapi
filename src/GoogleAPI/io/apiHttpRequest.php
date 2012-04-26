@@ -16,6 +16,9 @@
  */
 
 namespace GoogleAPI\IO;
+
+use GoogleAPI\Service\apiUtils;
+
 /**
  * HTTP Request to be executed by apiIO classes. Upon execution, the
  * responseHttpCode, responseHeaders and responseBody will be filled in.

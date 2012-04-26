@@ -79,7 +79,11 @@ class apiClient {
       'request_token_url' => 'https://www.google.com/accounts/OAuthGetRequestToken',
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
+  private $config = array(
+      // Don't change these unless you're working against a special development or testing environment.
+      'basePath' => 'https://www.googleapis.com',
 
+  );
    /**
     * @param Auth\apiAuth $auth
     * @param IO\apiIO $apiIO
@@ -104,17 +108,12 @@ class apiClient {
      * @throws apiException
      */
   public function addService($service, $version) {
-    global $apiConfig;
     if ($this->authenticated) {
       // Adding services after being authenticated, since the oauth scope is already set (so you wouldn't have access to that data)
       throw new apiException('Cant add services after having authenticated');
     }
     $this->services[$service] = $this->defaultService;
-    if (isset($apiConfig['services'][$service])) {
-      // Merge the service descriptor with the default values
-      $this->services[$service] = array_merge($this->services[$service], $apiConfig['services'][$service]);
-    }
-    $this->services[$service]['discoveryURI'] = $apiConfig['basePath'] . '/discovery/' . self::discoveryVersion . '/describe/' . urlencode($service) . '/' . urlencode($version);
+    $this->services[$service]['discoveryURI'] = $this->config['basePath'] . '/discovery/' . self::discoveryVersion . '/describe/' . urlencode($service) . '/' . urlencode($version);
   }
 
   /**

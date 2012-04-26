@@ -15,6 +15,7 @@
  * limitations under the License.
  */
  namespace GoogleAPI\Auth;
+ use GoogleAPI\IO\apiHttpRequest;
 
 //require_once "apiAuthNone.php";
 //require_once "apiOAuth.php";

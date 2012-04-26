@@ -16,7 +16,8 @@
  */
 
 namespace GoogleAPI\Auth;
-
+use GoogleAPI\apiClient;
+use GoogleAPI\IO\apiHttpRequest;
 //require_once "apiVerifier.php";
 //require_once "apiLoginTicket.php";
 //require_once "service/apiUtils.php";

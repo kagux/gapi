@@ -16,6 +16,7 @@
  */
 
 namespace GoogleAPI\IO;
+use GoogleAPI\apiClient;
 
 /**
  * Curl based implementation of apiIO.
