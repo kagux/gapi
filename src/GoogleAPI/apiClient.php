@@ -17,7 +17,7 @@
 
 namespace GoogleAPI;
 
-use GoogleAPI\Cache\apiFileCache;
+use GoogleAPI\Cache\apiCache;
 
 // Check for the required json and curl extensions, the Google API PHP Client won't function without them.
 if (! function_exists('curl_init')) {
@@ -35,27 +35,6 @@ if (! function_exists('http_build_query')) {
 if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) {
   date_default_timezone_set('UTC');
 }
-
-// hack around with the include paths a bit so the library 'just works'
-//$cwd = dirname(__FILE__);
-//set_include_path("$cwd" . PATH_SEPARATOR . get_include_path());
-//
-//require_once "config.php";
-// If a local configuration file is found, merge it's values with the default configuration
-//if (file_exists($cwd . '/local_config.php')) {
-//  $defaultConfig = $apiConfig;
-//  require_once ($cwd . '/local_config.php');
-//  $apiConfig = array_merge($defaultConfig, $apiConfig);
-//}
-
-// Include the top level classes, they each include their own dependencies
-//require_once 'service/apiModel.php';
-//require_once 'service/apiService.php';
-//require_once 'service/apiServiceRequest.php';
-//require_once 'auth/apiAuth.php';
-//require_once 'cache/apiCache.php';
-//require_once 'io/apiIO.php';
-//require_once('service/apiMediaFileUpload.php');
 
 /**
  * The Google API Client
@@ -98,7 +77,7 @@ class apiClient {
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
 
-  public function __construct($config = array()) {
+  public function __construct(apiCache $cache, $config = array()) {
     $apiConfig = array_merge($this->defaultConfig(), $config);
     self::$cache = new $apiConfig['cacheClass']();
     self::$auth = new $apiConfig['authClass']();
