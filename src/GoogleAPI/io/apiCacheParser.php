@@ -14,6 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+namespace GoogleAPI\IO;
 /**
  * Implement the caching directives specified in rfc2616. This
  * implementation is guided by the guidance offered in rfc2616-sec13.

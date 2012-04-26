@@ -17,6 +17,8 @@
 
 namespace GoogleAPI;
 
+use GoogleAPI\Cache\apiFileCache;
+
 // Check for the required json and curl extensions, the Google API PHP Client won't function without them.
 if (! function_exists('curl_init')) {
   throw new \Exception('Google PHP API Client requires the CURL PHP extension');
@@ -398,9 +400,9 @@ class apiClient {
           'site_name' => 'www.example.org',
 
           // Which Authentication, Storage and HTTP IO classes to use.
-          'authClass'    => 'apiOAuth2',
-          'ioClass'      => 'apiCurlIO',
-          'cacheClass'   => 'apiFileCache',
+          'authClass'    => 'GoogleAPI\Auth\apiOAuth2',
+          'ioClass'      => 'GoogleAPI\IO\apiCurlIO',
+          'cacheClass'   => 'GoogleAPI\Cache\apiFileCache',
 
           // If you want to run the test suite (by running # phpunit AllTests.php in the tests/ directory), fill in the settings below
           'oauth_test_token' => '', // the oauth access token to use (which you can get by runing authenticate() as the test user and copying the token value), ie '{"key":"foo","secret":"bar","callback_url":null}'

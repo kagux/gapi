@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-require_once "apiPemVerifier.php";
+namespace GoogleAPI\Auth;
+
+//require_once "apiPemVerifier.php";
 
 /**
  * Verifies signatures.

@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Auth;
 /**
  * Do-nothing authentication implementation, use this if you want to make un-authenticated calls
  * @author Chris Chabot <chabotc@google.com>

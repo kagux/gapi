@@ -15,7 +15,8 @@
  * limitations under the License.
  */
 
-require_once "apiP12Signer.php";
+namespace GoogleAPI\Auth;
+//require_once "apiP12Signer.php";
 
 /**
  * Signs data.

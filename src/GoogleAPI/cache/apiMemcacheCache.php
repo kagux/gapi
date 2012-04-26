@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Cache;
+
 /**
  * A persistent storage class based on the memcache, which is not
  * really very persistent, as soon as you restart your memcache daemon

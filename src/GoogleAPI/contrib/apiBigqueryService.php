@@ -15,6 +15,7 @@
  * the License.
  */
 
+namespace GoogleAPI\Contrib;
 
   /**
    * The "tables" collection of methods.

@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\IO;
+
 /**
  * Curl based implementation of apiIO.
  *

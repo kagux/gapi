@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\IO;
 /**
  * This class implements the experimental JSON-RPC transport for executing apiServiceRequest'
  *

@@ -14,10 +14,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
+namespace GoogleAPI\Contrib;
 
-require_once 'service/apiModel.php';
-require_once 'service/apiService.php';
-require_once 'service/apiServiceRequest.php';
+//require_once 'service/apiModel.php';
+//require_once 'service/apiService.php';
+//require_once 'service/apiServiceRequest.php';
 
 
   /**

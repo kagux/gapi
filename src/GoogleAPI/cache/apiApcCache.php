@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace GoogleAPI\Cache;
 
 /**
  * A persistent storage class based on the APC cache, which is not

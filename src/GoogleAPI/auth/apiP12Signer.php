@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Auth;
+
 /**
  * Signs data.
  *

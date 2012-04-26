@@ -15,6 +15,7 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\IO;
 /**
  * HTTP Request to be executed by apiIO classes. Upon execution, the
  * responseHttpCode, responseHeaders and responseBody will be filled in.

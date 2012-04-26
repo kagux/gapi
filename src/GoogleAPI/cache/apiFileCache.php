@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Cache;
+
 /*
  * This class implements a basic on disk storage. While that does
  * work quite well it's not the most elegant and scalable solution.

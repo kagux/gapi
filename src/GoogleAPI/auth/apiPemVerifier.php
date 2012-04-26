@@ -15,6 +15,8 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI\Auth;
+
 /**
  * Verifies signatures using PEM encoded certificates.
  *

@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
-require_once "external/OAuth.php";
+namespace GoogleAPI\Auth;
+
+//require_once "external/OAuth.php";
 
 /**
  * Authentication class that deals with 3-Legged OAuth 1.0a authentication

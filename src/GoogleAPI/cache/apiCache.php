@@ -14,6 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+namespace GoogleAPI\Cache;
 
 require_once "apiFileCache.php";
 require_once "apiApcCache.php";

@@ -1,5 +1,7 @@
 <?php
 
+namespace GoogleAPI\External;
+
 /* Generic exception class
  */
 class apiClientOAuthException extends Exception {

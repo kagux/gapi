@@ -22,6 +22,8 @@ OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+namespace GoogleAPI\External;
+
 /**
  * A URI Template Parser which is used by the apiREST class to resolve the REST requests
  * Blogpost: http://lab.kevburnsjr.com/php-uri-template-parser

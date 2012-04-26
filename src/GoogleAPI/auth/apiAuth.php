@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+ namespace GoogleAPI\Auth;
 
-require_once "apiAuthNone.php";
-require_once "apiOAuth.php";
-require_once "apiOAuth2.php";
+//require_once "apiAuthNone.php";
+//require_once "apiOAuth.php";
+//require_once "apiOAuth2.php";
 
 /**
  * Abstract class for the Authentication in the API client
