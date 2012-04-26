@@ -15,17 +15,19 @@
  * limitations under the License.
  */
 
+namespace GoogleAPI;
+
 // Check for the required json and curl extensions, the Google API PHP Client won't function without them.
 if (! function_exists('curl_init')) {
-  throw new Exception('Google PHP API Client requires the CURL PHP extension');
+  throw new \Exception('Google PHP API Client requires the CURL PHP extension');
 }
 
 if (! function_exists('json_decode')) {
-  throw new Exception('Google PHP API Client requires the JSON PHP extension');
+  throw new \Exception('Google PHP API Client requires the JSON PHP extension');
 }
 
 if (! function_exists('http_build_query')) {
-  throw new Exception('Google PHP API Client requires http_build_query()');
+  throw new \Exception('Google PHP API Client requires http_build_query()');
 }
 
 if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) {
@@ -33,25 +35,25 @@ if (! ini_get('date.timezone') && function_exists('date_default_timezone_set')) 
 }
 
 // hack around with the include paths a bit so the library 'just works'
-$cwd = dirname(__FILE__);
-set_include_path("$cwd" . PATH_SEPARATOR . get_include_path());
-
-require_once "config.php";
+//$cwd = dirname(__FILE__);
+//set_include_path("$cwd" . PATH_SEPARATOR . get_include_path());
+//
+//require_once "config.php";
 // If a local configuration file is found, merge it's values with the default configuration
-if (file_exists($cwd . '/local_config.php')) {
-  $defaultConfig = $apiConfig;
-  require_once ($cwd . '/local_config.php');
-  $apiConfig = array_merge($defaultConfig, $apiConfig);
-}
+//if (file_exists($cwd . '/local_config.php')) {
+//  $defaultConfig = $apiConfig;
+//  require_once ($cwd . '/local_config.php');
+//  $apiConfig = array_merge($defaultConfig, $apiConfig);
+//}
 
 // Include the top level classes, they each include their own dependencies
-require_once 'service/apiModel.php';
-require_once 'service/apiService.php';
-require_once 'service/apiServiceRequest.php';
-require_once 'auth/apiAuth.php';
-require_once 'cache/apiCache.php';
-require_once 'io/apiIO.php';
-require_once('service/apiMediaFileUpload.php');
+//require_once 'service/apiModel.php';
+//require_once 'service/apiService.php';
+//require_once 'service/apiServiceRequest.php';
+//require_once 'auth/apiAuth.php';
+//require_once 'cache/apiCache.php';
+//require_once 'io/apiIO.php';
+//require_once('service/apiMediaFileUpload.php');
 
 /**
  * The Google API Client
@@ -93,9 +95,9 @@ class apiClient {
       'request_token_url' => 'https://www.google.com/accounts/OAuthGetRequestToken',
       'access_token_url' => 'https://www.google.com/accounts/OAuthGetAccessToken');
 
+
   public function __construct($config = array()) {
-    global $apiConfig;
-    $apiConfig = array_merge($apiConfig, $config);
+    $apiConfig = array_merge($this->defaultConfig(), $config);
     self::$cache = new $apiConfig['cacheClass']();
     self::$auth = new $apiConfig['authClass']();
     self::$io = new $apiConfig['ioClass']();
@@ -107,9 +109,12 @@ class apiClient {
     return $this->$service;
   }
 
-  /**
-   * Add a service
-   */
+    /**
+     * Add a service
+     * @param $service
+     * @param $version
+     * @throws apiException
+     */
   public function addService($service, $version) {
     global $apiConfig;
     if ($this->authenticated) {
@@ -361,10 +366,91 @@ class apiClient {
   public function getCache() {
     return apiClient::$cache;
   }
+
+    /**
+     * Default configurations
+     * @return array
+     */
+  private function defaultConfig() {
+      return array(
+          // True if objects should be returned by the service classes.
+          // False if associative arrays should be returned (default behavior).
+          'use_objects' => false,
+
+          // The application_name is included in the User-Agent HTTP header.
+          'application_name' => '',
+
+          // OAuth2 Settings, you can get these keys at https://code.google.com/apis/console
+          'oauth2_client_id' => '',
+          'oauth2_client_secret' => '',
+          'oauth2_redirect_uri' => '',
+
+          // The developer key, you get this at https://code.google.com/apis/console
+          'developer_key' => '',
+
+          // OAuth1 Settings.
+          // If you're using the apiOAuth auth class, it will use these values for the oauth consumer key and secret.
+          // See http://code.google.com/apis/accounts/docs/RegistrationForWebAppsAuto.html for info on how to obtain those
+          'oauth_consumer_key'    => 'anonymous',
+          'oauth_consumer_secret' => 'anonymous',
+
+          // Site name to show in the Google's OAuth 1 authentication screen.
+          'site_name' => 'www.example.org',
+
+          // Which Authentication, Storage and HTTP IO classes to use.
+          'authClass'    => 'apiOAuth2',
+          'ioClass'      => 'apiCurlIO',
+          'cacheClass'   => 'apiFileCache',
+
+          // If you want to run the test suite (by running # phpunit AllTests.php in the tests/ directory), fill in the settings below
+          'oauth_test_token' => '', // the oauth access token to use (which you can get by runing authenticate() as the test user and copying the token value), ie '{"key":"foo","secret":"bar","callback_url":null}'
+          'oauth_test_user' => '', // and the user ID to use, this can either be a vanity name 'testuser' or a numberic ID '123456'
+
+          // Don't change these unless you're working against a special development or testing environment.
+          'basePath' => 'https://www.googleapis.com',
+
+          // IO Class dependent configuration, you only have to configure the values for the class that was configured as the ioClass above
+          'ioFileCache_directory'  =>
+          (function_exists('sys_get_temp_dir') ?
+              sys_get_temp_dir() . '/apiClient' :
+              '/tmp/apiClient'),
+          'ioMemCacheStorage_host' => '127.0.0.1',
+          'ioMemcacheStorage_port' => '11211',
+
+          // Definition of service specific values like scopes, oauth token URLs, etc
+          'services' => array(
+              'analytics' => array('scope' => 'https://www.googleapis.com/auth/analytics.readonly'),
+              'calendar' => array(
+                  'scope' => array(
+                      "https://www.googleapis.com/auth/calendar",
+                      "https://www.googleapis.com/auth/calendar.readonly",
+                  )
+              ),
+              'books' => array('scope' => 'https://www.googleapis.com/auth/books'),
+              'latitude' => array(
+                  'scope' => array(
+                      'https://www.googleapis.com/auth/latitude.all.best',
+                      'https://www.googleapis.com/auth/latitude.all.city',
+                  )
+              ),
+              'moderator' => array('scope' => 'https://www.googleapis.com/auth/moderator'),
+              'oauth2' => array(
+                  'scope' => array(
+                      'https://www.googleapis.com/auth/userinfo.profile',
+                      'https://www.googleapis.com/auth/userinfo.email',
+                  )
+              ),
+              'plus' => array('scope' => 'https://www.googleapis.com/auth/plus.me'),
+              'siteVerification' => array('scope' => 'https://www.googleapis.com/auth/siteverification'),
+              'tasks' => array('scope' => 'https://www.googleapis.com/auth/tasks'),
+              'urlshortener' => array('scope' => 'https://www.googleapis.com/auth/urlshortener')
+          )
+      );
+  }
 }
 
 // Exceptions that the Google PHP API Library can throw
-class apiException extends Exception {}
+class apiException extends \Exception {}
 class apiAuthException extends apiException {}
 class apiCacheException extends apiException {}
 class apiIOException extends apiException {}
