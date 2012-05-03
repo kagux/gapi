@@ -86,7 +86,7 @@ class apiAnalyticsService extends apiService {
      * @return GaData
      */
     public function getAnalyticsData($ids, $start_date, $end_date, $metrics, $optParams = array()) {
-        $this->data_ga->get($ids, $start_date, $end_date,$metrics, $optParams);
+        return $this->data_ga->get($ids, $start_date, $end_date,$metrics, $optParams);
     }
 
 }
